@@ -1,0 +1,14 @@
+com/zark/MainActivity.java
+ com.zark.MainActivity
+com/zark/BuildConfig.java
+ com.zark.BuildConfig
+com/zark/ReactNativeFlipper.java
+ com.zark.ReactNativeFlipper
+ com.zark.ReactNativeFlipper$1
+ com.zark.ReactNativeFlipper$2
+ com.zark.ReactNativeFlipper$2$1
+com/zark/MainApplication.java
+ com.zark.MainApplication
+ com.zark.MainApplication$1
+com/facebook/react/PackageList.java
+ com.facebook.react.PackageList

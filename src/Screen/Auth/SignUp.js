@@ -6,6 +6,7 @@ import Icon from 'react-native-vector-icons/Ionicons';
 import Button from '../../Component/Button'
 import {FONTS} from '../../Fonts/Fonts'
 import {EMAIl} from '../../Constant/Constant'
+
 var { height, width } = Dimensions.get('window')
 const SignUpScreen = (props) => {
   const [userName, setUserName] = useState('');
@@ -27,7 +28,7 @@ const SignUpScreen = (props) => {
       </View>
       
       <View style={{flex:0.4,backgroundColor:'#FFFFFF',marginLeft:15,marginRight:15,borderRadius:20}}>
-      <View style={styles.passwordContainer}>
+      <View style={[styles.passwordContainer,{marginTop:40}]}>
       <TextInput
       label="Username"
       mode="outlined"
@@ -72,27 +73,33 @@ const SignUpScreen = (props) => {
 <Icon
     name="eye"
     onPress={() =>alert('hi')}
-    color={hidePassword?'#E5E5E5':'#0087ED'}
+    color={hidePassword?'#0087ED':'#E5E5E5'}
     size={22}
 /></TouchableOpacity>
     </View>
     
-        
+    <Checkbox
+
+
+  checked={true}
+/>
       </View>
       <View style={{flex:0.1}}></View>
-      <View style={{flex:0.01,alignSelf:'center',marginLeft:width/4}}>
+      <View style={{flex:0.03,alignSelf:'center',marginLeft:width/3}}>
       <Button 
              click={_onDone}
              textColor='#FFFFFF'
              fontSize={14}
+             height={44}
+             width={120}
              backgroundColor='#0087ED'
-             title={'Login'}
+             title={'signup'}
             /> 
               
       </View>
       <View style={{flex:0.1,marginTop:10}}>
   
-               <Text style={{textAlign:'center',color:'#0087ED',fontWeight:'bold'}}onPress={()=>props.navigation.navigate('ForgotPasswordScreen')}>Signup</Text>
+               <Text style={{textAlign:'center',color:'#0087ED',fontWeight:'bold',marginLeft:width/9}}onPress={()=>props.navigation.navigate('ForgotPasswordScreen')}>Login</Text>
       </View>
 
 </KeyboardAwareScrollView>
@@ -106,8 +113,8 @@ const styles = StyleSheet.create({
   passwordContainer: {
     flexDirection: 'row',
     paddingBottom: 10,
-    marginHorizontal: 15,
-    marginVertical: 15,
+    marginHorizontal: 20,
+    marginVertical: 20,
     alignItems: 'center',
     height: 55,
     // borderBottomWidth: 0.6,
@@ -117,6 +124,7 @@ const styles = StyleSheet.create({
   },
   inputStyle: {
     flex: 1,
+    backgroundColor:'#FFFFFF'
     // paddingLeft: 10,
     // paddingRight: 5,
     // marginLeft: 5,
