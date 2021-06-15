@@ -16,10 +16,10 @@ const ResetPasswordScreen = (props) => {
   const [msgForNewPwd,setMsgForNewPwd] = useState(false);
   const [msgForConfirmPwd,setMsgForConfirmPwd] = useState(false);
   const _onDone = () => {
-       if(newPwd!==confirmPwd){
-        setPasswordErrorMsg(true)
-        return true
-       }
+      //  if(newPwd!==confirmPwd){
+      //   msgForConfirmPwd(true)
+      //   return true
+      //  }
     props.navigation.navigate('HomeScreen')   
     
  }
@@ -50,17 +50,18 @@ const setConfirmPwdFunction=(pwd)=>{
       </View>
  
       <View style={{flex:0.1,backgroundColor:'#FFFFFF',margin:15,borderRadius:20,elevation:1}}>
-     
+      {/* <Text style={{fontFamily:FONTS.PROXIMA_NOVA,fontSize:12,color:'#00B21D',position:'absolute',left:36,top:5}}>password</Text> */}
       <View style={styles.passwordContainer}>
-   
+      
    <TextInput
- label="Password"
+ label={"Password"}
  mode="outlined"
+ theme={{ colors: { placeholder:msgForNewPwd===true? '#00B21D':'#757575'} }}
 
  value={newPwd}
  style={styles.inputStyle}
  secureTextEntry={hideNewPassword}
- outlineColor='#757575'
+ outlineColor={msgForNewPwd===true?'#00B21D':'#757575'}
  right={<TextInput.Icon size={20} name="eye" color={hideNewPassword===true?"#CCCCCC":'#0087ED'} onPress={()=>setHideNewPassword(!hideNewPassword)}/>}
  onChangeText={pwd => setNewPwdFunction(pwd)}
 
@@ -81,9 +82,10 @@ const setConfirmPwdFunction=(pwd)=>{
  mode="outlined"
 
  value={confirmPwd}
+ theme={{ colors: { placeholder:msgForConfirmPwd===true? '#00B21D':'#757575'} }}
  style={styles.inputStyle}
  secureTextEntry={hideConfirmPassword}
- outlineColor='#757575'
+ outlineColor={msgForConfirmPwd==true?'#00B21D':'#757575'}
  right={<TextInput.Icon size={20} name="eye" color={hideConfirmPassword===true?"#CCCCCC":'#0087ED'} onPress={()=>setHideConfirmPassword(!hideConfirmPassword)}/>}
  onChangeText={pwd => setConfirmPwdFunction(pwd)}
 

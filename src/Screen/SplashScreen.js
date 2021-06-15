@@ -10,18 +10,21 @@ const SplashScreen = (props) => {
   const  styles=SpalshStyles();
     const switch_status=true
     useEffect(async() => {
-        
+      syncImmediate() 
      let introSlider= await getData(STORAGE_CONSTANT.INTROSINGLESLIDER)||null;
      let introMultiSlider=await getData(STORAGE_CONSTANT.INTROMULTISLIDER)||null
+     let loged_in=await getData(STORAGE_CONSTANT.LOGED_IN)||null
      
      if(introMultiSlider===null){
       props.navigation.navigate('IntroMultisliderScreen');
      }else if(introSlider===null){
       props.navigation.navigate('IntroSliderScreen');
-     }else{
+     }else if(loged_in===null){
       props.navigation.navigate('LoginScreen');
+     }else{
+      props.navigation.navigate('HomeScreen');
      }
-     syncImmediate()
+    
       });
       const syncImmediate=()=> {
         CodePush.sync(

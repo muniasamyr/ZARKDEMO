@@ -51,11 +51,13 @@ const filter=async (item,index)=>{
   }
   const renderItem2 = ({ item, index }) => {
     return (
-      <HomeCard></HomeCard> 
+      <HomeCard
+      type={type}
+      ></HomeCard> 
     );
 }
       return   <View style={{flex:1,backgroundColor:'#E5E5E5'}}>
-<ScrollView>
+<ScrollView style={{flex:1}}>
        <View style={{ flex:0.1 ,backgroundColor:'#FFFFFF',elevation:3 }}>
 
 <FlatList
@@ -78,6 +80,7 @@ const filter=async (item,index)=>{
 <FlatList 
     contentContainerStyle={{ flexGrow: 1 }}
     data={tab_data}
+    
     renderItem={renderItem2}
     keyExtractor={(item, index) => index.toString()}
 ></FlatList>
