@@ -4,6 +4,8 @@ import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view
 import { TextInput ,Checkbox} from 'react-native-paper';
 import Button from '../../Component/Button'
 import {FONTS} from '../../Fonts/Fonts'
+import {STORAGE_CONSTANT} from '../../Constant/Constant'
+import {setData} from '../../Helper/StrorageHelper'
 import {EMAIl,PASSWORD_LENGTH,PASSWORD} from '../../Constant/Constant'
 var { height, width } = Dimensions.get('window')
 const LoginScreen = (props) => {
@@ -21,13 +23,13 @@ const LoginScreen = (props) => {
       
     }
        if(PASSWORD!==pwd){
-        //  if(ErrorMsg===false){
+    
         setPasswordErrorMsg(true)
          return true
-        //  }
+      
         
        }
-
+       setData(STORAGE_CONSTANT.LOGED_IN,'1')
     props.navigation.navigate('HomeScreen')   
     
  }
@@ -65,6 +67,7 @@ const LoginScreen = (props) => {
  value={pwd}
  style={styles.inputStyle}
  secureTextEntry={hidePassword}
+ theme={{ colors: { placeholder:passwordErrorMsg===true? 'red':'#757575'} }}
  outlineColor={passwordErrorMsg===true?'red':'#757575'}
  right={<TextInput.Icon size={20} name="eye" color={hidePassword===true?"#CCCCCC":'#0087ED'} onPress={()=>setHidePassword(!hidePassword)}/>}
  onChangeText={pwd => setPwdFunction(pwd)}
@@ -81,7 +84,7 @@ const LoginScreen = (props) => {
     </View>:null}
      
     <Text style={{textAlign:'right',marginRight:30}}onPress={()=>props.navigation.navigate('ForgotPasswordScreen')}>Forgot Password?</Text>
-    {passwordErrorMsg==true?
+    {ErrorMsg==true?
     <View style={{flex:0.01,marginLeft:20,marginTop:10}}>
             <Text style={{fontFamily:FONTS.PROXIMA_NOVA,fontSize:12,color:'#F01E18'}}>Kindly fill all the field</Text> 
     </View>:null} 
@@ -100,7 +103,7 @@ const LoginScreen = (props) => {
       </View>
       <View style={{flex:0.1,marginTop:10}}>
   
-               <Text style={{textAlign:'center',color:'#0087ED',fontWeight:'bold',marginLeft:20}}onPress={()=>props.navigation.navigate('ForgotPasswordScreen')}>Signup</Text>
+               <Text style={{textAlign:'center',color:'#0087ED',fontWeight:'bold',marginLeft:20}}onPress={()=>props.navigation.navigate('SignUpScreen')}>Signup</Text>
       </View>
 
 </KeyboardAwareScrollView>

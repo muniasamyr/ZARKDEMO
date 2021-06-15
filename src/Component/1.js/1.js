@@ -13,11 +13,10 @@ const FirstCard = (props) => {
   }
   const renderItem1 = ({ item, index }) => {
     return (
-
-
-      <View style={{flex:0.4,marginLeft:10,marginRight:5,marginTop:10,borderRadius:20,backgroundColor:'#FFFFFF',flexDirection:'row',elevation:3,width:width-50}}>
-                <View style={{flex:0.4,flexDirection:'column'}}>
-      <ImageBackground source={require('../Image/1.jpg')} style={{ height: "100%", width: '100%' }}
+      <View style={{flex:0.4 }}>  
+      <Text style={{  fontSize: 15,marginLeft:20,marginTop:15}}>{props.type===HOME_TABS.INVITIES?'Private':props.type===HOME_TABS.UPCOMING?'My Challenges':props.type===HOME_TABS.COMPLETE?'Pending':''}</Text>
+      <View style={{flex:0.9,marginLeft:20,marginRight:20,marginTop:10,borderRadius:10,backgroundColor:'#FFFFFF',flexDirection:'row',elevation:3}}>
+      <ImageBackground source={require('../Image/1.jpg')} style={{ height: "100%", width: '100%',flex:0.4,flexDirection:'column' }}
                 imageStyle={{ opacity: 0.8, borderBottomLeftRadius: 10, borderBottomRightRadius: 10 }}>
       
                 <View style={{ flex:0.7,flexDirection: 'row', marginHorizontal: 10, marginTop: 10 }}>
@@ -34,7 +33,6 @@ const FirstCard = (props) => {
               
                 
               </ImageBackground>
-              </View>
               <View style={{flex:0.6,flexDirection:'column'}}>
               <View style={{flex:0.35,flexDirection:'row',}}>
               <Text style={{ color:'#000', fontSize: 14,fontWeight:'700',marginHorizontal:20,marginTop:10}} numberOfLines={2}>Jack challenged 6 players to DOTA</Text>
@@ -74,7 +72,7 @@ const FirstCard = (props) => {
                      <View style={{flex:0.75,flexDirection:'column'}}>
                               <Text style={{ color:'#000', fontSize: 10,fontWeight:'400'}} numberOfLines={1}>Mike +2 others joined</Text>
                               </View>
-              </View>:<View style={{flex:0.2,flexDirection:'row',marginLeft:20}}>
+              </View>:<View style={{flex:0.15,flexDirection:'row',marginLeft:20}}>
         
                      
                               <Text style={{ color:'#000', fontSize: 14,fontWeight:'400',lineHeight:15}} numberOfLines={2}>A challenge to take 100 kills.</Text>
@@ -147,23 +145,19 @@ const FirstCard = (props) => {
       </View>
       
       
+      </View>
       
-      
-
 
     );
 }
-      return       <View style={{flex:0.4 }}>  
-      <Text style={{  fontSize: 15,marginLeft:20,marginTop:15}}>{props.type===HOME_TABS.INVITIES?'Private':props.type===HOME_TABS.UPCOMING?'My Challenges':props.type===HOME_TABS.COMPLETE?'Pending':''}</Text>
-      
-      <FlatList
-     horizontal={true}
-    contentContainerStyle={{flexGrow:1}}
-    data={[1,2,3]}
+      return <FlatList
+    horizontal={true}
+  //  contentContainerStyle={{flex:0.9,flexDirection:'row'}}
+  
+    data={[1,2]}
     renderItem={renderItem1}
     keyExtractor={(item, index) => index.toString()}
-/>
-</View>
+></FlatList>
 
 };
 
@@ -174,27 +168,5 @@ const styles = StyleSheet.create({
 });
 
 export default FirstCard;
-
-
-// <View style={{flex:1,flexDirection:'row',width:width-40,backgroundColor:'red',margin:10}}>
-// <View style={{flex:0.5,flexDirection:'column'}}>
-//                                  {/* <Image
-//                                       style={{height:100,width:100,borderRadius:55,alignSelf:'center',marginTop:10}}
-//                                           resizeMode={'center'}
-//                                           source={require('../image/female.jpg')}
-//                                       /> */}
-                                    
-
-// </View>
-// <View style={{flex:0.5,flexDirection:'column'}}>
-//     <Text style={{marginTop: 5,marginLeft:5,textDecorationColor:'grey'}}>kayal </Text> 
-//     <Text style={{marginTop: 5,marginLeft:5}}>27 yrs old </Text> 
-//     <Text style={{marginTop: 5,marginLeft:5}}>D/o karthick</Text> 
-//     <Text style={{marginTop: 5,marginLeft:5}}>vedapatti</Text> 
-    
-// </View>
-    
-// </View>   
-
 
 

@@ -8,9 +8,14 @@ import {FONTS} from '../../Fonts/Fonts'
 import Button from '../../Component/Button'
 var { height, width } = Dimensions.get('window')
 const ForgotPasswordScreen = (props) => {
+  const [email,setEmail] = useState('');
+  const [isError,setIsError] = useState(false);
   const _onDone = () => {
-       
-     alert('hi') 
+       if(email===''){
+        setIsError(true)
+        return
+       }
+   
     props.navigation.navigate('ResetPasswordScreen')  
   }
       return   <View style={{flex:1,backgroundColor:'#E5E5E5'}}>
@@ -26,11 +31,15 @@ const ForgotPasswordScreen = (props) => {
       label="Email"
       mode="outlined"
       outlineColor='#757575'
+      onChangeText={text => setEmail(text.trim())}
       style={{margin:15,marginTop:-2}}
     //   value={text}
     
     />
-     
+     {isError==true?
+    <View style={{flex:0.01,marginLeft:20,marginTop:10}}>
+            <Text style={{fontFamily:FONTS.PROXIMA_NOVA,fontSize:12,color:'#F01E18'}}>Kindly fill  the Email</Text> 
+    </View>:null} 
    
         
       </View>

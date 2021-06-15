@@ -16,7 +16,12 @@ const SignUpScreen = (props) => {
   const [pwd,setPwd] = useState('');
   const [hidePassword,setHidePassword]=useState(true);
   const [isChecked,setChecked]=useState(false);
+  const [isError,setIsError]=useState(false)
   const _onDone = () => {
+    if(userName===''||email===''||pwd===''||isChecked===false){
+      setIsError(true);
+      return false
+    }
        if(email===EMAIl){
         setEmailError(true)
         return false
@@ -67,6 +72,7 @@ const SignUpScreen = (props) => {
       value={email}
       style={styles.inputStyle}
      placeholderTextColor={'#757575'}
+     theme={{ colors: { placeholder:emailError===true? 'red':'#757575'} }}
       outlineColor={emailError===true?'red':'#757575'}
       onChangeText={email => setEmail(email.trim())}
       // style={{margin:20}}
@@ -104,6 +110,11 @@ const SignUpScreen = (props) => {
     <View style={{flex:0.01,marginLeft:20,marginTop:-10}}>
             <Text style={{fontFamily:FONTS.PROXIMA_NOVA,fontSize:12,color:'#00B21D'}}>Strong password</Text> 
     </View>:null}
+    {
+  isError===true?<View style={{flex:0.01,marginLeft:20,marginTop:-10}}>
+  <Text style={{fontFamily:FONTS.PROXIMA_NOVA,fontSize:12,color:'#F01E18'}}>Email already exists</Text> 
+</View>:null
+}
     <View style={{marginLeft:20,flex:0.1,opacity:0.4,justifyContent:'flex-end',marginBottom:10}}>
     <Checkbox
     contentContainerStyle={{borderWidth:0.1,borderColor:'red',opacity:0.6}}
@@ -112,6 +123,7 @@ const SignUpScreen = (props) => {
 status={isChecked===true?'checked':'unchecked '}
 />
 <Text style={{position:'absolute',left:30,bottom:8}}>I certify that I am 13 years or older.</Text>
+
 </View>
       </View>
       <View style={{flex:0.1}}></View>
