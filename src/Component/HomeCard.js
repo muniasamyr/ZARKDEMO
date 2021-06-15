@@ -55,6 +55,7 @@ const HomeCard = (props) => {
                      data={tab_data}
                      contentContainerStyle={{marginLeft:5}}
                      horizontal={true}
+                     keyExtractor={(item, index) => index.toString()}
                      renderItem={({ item, index }) =>
                    
       

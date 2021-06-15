@@ -5,18 +5,19 @@ import CodePush from 'react-native-code-push';
 var { height, width } = Dimensions.get('window');
 import {getData} from '../Helper/StrorageHelper';
 import {STORAGE_CONSTANT} from '../Constant/Constant'
-
+import {SpalshStyles} from '../StyleSheet/SplashStyle'
 const SplashScreen = (props) => {
+  const  styles=SpalshStyles();
     const switch_status=true
     useEffect(async() => {
         
      let introSlider= await getData(STORAGE_CONSTANT.INTROSINGLESLIDER)||null;
      let introMultiSlider=await getData(STORAGE_CONSTANT.INTROMULTISLIDER)||null
      
-     if(introSlider===null){
-      props.navigation.navigate('IntroSliderScreen');
-     }else if(introMultiSlider===null){
+     if(introMultiSlider===null){
       props.navigation.navigate('IntroMultisliderScreen');
+     }else if(introSlider===null){
+      props.navigation.navigate('IntroSliderScreen');
      }else{
       props.navigation.navigate('LoginScreen');
      }
@@ -74,11 +75,11 @@ const SplashScreen = (props) => {
         }
       }
       
-      return   <View style={{flex:1,backgroundColor:'white'}}>
+      return   <View style={styles.container}>
        <KeyboardAwareScrollView scrollEnabled={true} keyboardShouldPersistTaps="handled" contentContainerStyle={{ flex: 1 }} keyboardDismissMode="interactive">
        <ImageBackground 
        source={require('../Image/SplashScreen.png')}
-       style={{height:'100%',width:'100%'}}
+       style={styles.image}
        ></ImageBackground>
 
 </KeyboardAwareScrollView>

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Text, StyleSheet, View, Dimensions, SafeAreaView, Platform, ImageBackground, TouchableOpacity } from "react-native";
+import { Text, StyleSheet, View, Dimensions, SafeAreaView, Platform, ImageBackground,Image, TouchableOpacity } from "react-native";
 import NotificationIcon from 'react-native-vector-icons/Fontisto'
 var { height, width } = Dimensions.get('window')
 import { ProgressBar } from 'react-native-paper';
@@ -10,7 +10,19 @@ const Header = (props) => {
 
 
     }
-    return <SafeAreaView style={{ height: height / 100 * 9, backgroundColor: '#fff', paddingLeft: 10, paddingVertical: 10, flexDirection: 'row' }}>
+    return props.type===0?<SafeAreaView style={{ height: height / 100 * 9, backgroundColor: '#E5E5E5', paddingLeft: 10, paddingVertical: 10, flexDirection: 'row' }}>
+    <View style={{ flex: 0.4 }}>
+    <Image
+                style={styles.image}
+                resizeMode={'center'}
+                source={require('../Image/Vector.png')}
+              />
+    </View>
+
+    
+
+
+</SafeAreaView>:<SafeAreaView style={{ height: height / 100 * 9, backgroundColor: '#fff', paddingLeft: 10, paddingVertical: 10, flexDirection: 'row' }}>
         <View style={{ flex: 0.4 }}>
             <Text style={{ fontSize: 30, fontFamily: FONTS.PROXIMA_NOVA, fontWeight: 'bold' }}>Zark</Text>
         </View>
@@ -23,7 +35,15 @@ const Header = (props) => {
                 </ImageBackground>
             </View>
             <View style={{ flex: 0.6, flexDirection: 'column' }}>
-                <ProgressBar progress={0.3} style={{ height: 15, width: 70, borderRadius: 10, backgroundColor: '#DADADA', marginRight: 10, marginTop: 20,marginLeft:-10 }} color={'#0087ED'} />
+            <Text style={{  fontSize: 12, fontFamily: FONTS.PROXIMA_NOVA }} numberOfLines={1}>{'1200/1800'}</Text>
+                <ProgressBar progress={0.3} style={{ height: 18, width: 70, borderRadius: 10, backgroundColor: '#DADADA', marginRight: 10,marginLeft:-10 }} color={'#0087ED'} />
+              <View style={{flexDirection:'row'}}>
+              <ImageBackground source={require('../Image/CreditSymbol.png')} style={{ height: 10, width: 10, }}
+                    imageStyle={{ opacity: 0.8, }}>
+                    <Text style={{ color: '#fff', fontSize: 12, alignSelf: 'center', marginTop: 15 }}>12</Text>
+                </ImageBackground>
+               <Text style={{  fontSize: 12, fontFamily: FONTS.PROXIMA_NOVA ,marginTop:-2,marginLeft:2}} numberOfLines={1}>{'600'}</Text>
+               </View>
             </View>
             <TouchableOpacity
                 onPress={() => this.props.navigationProps.navigate('Notification')}

@@ -10,23 +10,23 @@ var { height, width } = Dimensions.get('window')
 const ForgotPasswordScreen = (props) => {
   const _onDone = () => {
        
-      
-    
+     alert('hi') 
+    props.navigation.navigate('ResetPasswordScreen')  
   }
       return   <View style={{flex:1,backgroundColor:'#E5E5E5'}}>
-       <KeyboardAwareScrollView scrollEnabled={true} keyboardShouldPersistTaps="handled" contentContainerStyle={{ flex: 1 }} keyboardDismissMode="interactive">
+       <KeyboardAwareScrollView scrollEnabled={true} keyboardShouldPersistTaps="handled" contentContainerStyle={{ flexGrow:1}} keyboardDismissMode="interactive">
       <View style={{flex:0.1}}>
-      <Text style={{fontFamily:FONTS.PROXIMA_NOVA,fontWeight:'bold',fontSize:18,marginTop:15,marginLeft:20}}>Forgot Password</Text> 
+      <Text style={{fontFamily:FONTS.PROXIMA_NOVA,fontWeight:'bold',fontSize:28,marginTop:15,marginLeft:20}}>Forgot Password</Text> 
       </View>
  
-      <View style={{flex:0.4,backgroundColor:'#FFFFFF',margin:15,borderRadius:10}}>
+      <View style={{flex:0.1,backgroundColor:'#FFFFFF',margin:15,marginTop:-5,borderRadius:20,elevation:3}}>
       <Text style={{fontFamily:FONTS.PROXIMA_NOVA,fontSize:14,lineHeight:22,margin:15}}> Please enter the email Id to recover the password</Text>
-      <Text style={{fontFamily:FONTS.PROXIMA_NOVA,fontSize:16,lineHeight:22,margin:15,opacity:0.3}}>We will email you a link to reset your password</Text>
+      <Text style={{fontFamily:FONTS.PROXIMA_NOVA,fontSize:16,lineHeight:22,margin:15,marginTop:-5,opacity:0.3}}>We will email you a link to reset your password</Text>
       <TextInput
       label="Email"
       mode="outlined"
-      outlineColor='red'
-      style={{margin:20}}
+      outlineColor='#757575'
+      style={{margin:15,marginTop:-2}}
     //   value={text}
     
     />
@@ -34,13 +34,14 @@ const ForgotPasswordScreen = (props) => {
    
         
       </View>
-      <View style={{flex:0.08,alignSelf:'center',marginLeft:40}}>
+      <View style={{flex:0.02,alignSelf:'center',marginLeft:width/6,marginTop:20}}>
       <Button 
              click={_onDone}
              textColor='#FFFFFF'
              fontSize={14}
+             width={120}
              backgroundColor='#0087ED'
-             title={'Signup'}
+             title={'send'}
             /> 
       </View>
 

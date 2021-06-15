@@ -14,7 +14,7 @@ const FirstCard = (props) => {
   const renderItem1 = ({ item, index }) => {
     return (
       <View style={{flex:0.4}}>  
-      <Text style={{  fontSize: 15,marginLeft:20,marginTop:15}}>{'Private'}</Text>
+      <Text style={{  fontSize: 15,marginLeft:20,marginTop:15}}>{props.type===HOME_TABS.INVITIES?'Private':props.type===HOME_TABS.UPCOMING?'My Challenges':props.type===HOME_TABS.COMPLETE?'Pending':''}</Text>
       <View style={{flex:0.9,marginLeft:20,marginRight:20,marginTop:10,borderRadius:10,backgroundColor:'#FFFFFF',flexDirection:'row'}}>
       <ImageBackground source={require('../Image/1.jpg')} style={{ height: "100%", width: '100%',flex:0.4,flexDirection:'column' }}
                 imageStyle={{ opacity: 0.8, borderBottomLeftRadius: 10, borderBottomRightRadius: 10 }}>
@@ -75,27 +75,33 @@ const FirstCard = (props) => {
               </View>}
               {
               props.type===HOME_TABS.INVITIES?
-              <View style={{flex:0.35,flexDirection:'row',marginLeft:15,}}>
-              <View style={{flex:0.5,flexDirection:'column',margin:10}}>
+              <View style={{flex:0.25,flexDirection:'row',marginLeft:15,}}>
+              <View style={{flex:0.6,flexDirection:'column',margin:10}}>
               <Button 
                    click={_onDone}
                    textColor='#FFFFFF'
                    fontSize={14}
-                   width={80}
+                   width={95}
+                   height={10}
                    backgroundColor='#0087ED'
                    title={'Accept'}
                   /> 
               </View>
               <View style={{flex:0.5,flexDirection:'column'}}>
-              <Text style={{ color:'#000', fontSize: 14,fontWeight:'700',marginTop:15}} numberOfLines={1}>10 Credits</Text>
+              <Text style={{ color:'#000', fontSize: 14,fontWeight:'700',marginTop:20}} numberOfLines={1}>10 Credits</Text>
               </View>
               </View>:props.type===HOME_TABS.UPCOMING?
                 <View style={{flex:0.15,flexDirection:'row',marginLeft:15}}>
-                <View style={{flex:0.25,flexDirection:'column'}}>
-                      <FlatList
+                <View style={{flex:0.25,flexDirection:'row',height:25}}>
+                {props.tab_data.map(ele=>{return <Image source={require('../Image/1.jpg')}
+                        style={{width: 18 , height: 18 ,alignItems: 'center',justifyContent: 'center',borderWidth: 1,borderColor: '#fff',borderRadius: 30,marginRight:index!==props.tab_data.length-1?-10:0,flexDirection:'row'}} />
+                    
+      
+                    })}
+                      {/* <FlatList
                              data={props.tab_data}
                              contentContainerStyle={{marginLeft:5}}
-                             horizontal={false}
+                             horizontal={true}
                              renderItem={({ item, index }) =>
                            
               
@@ -105,7 +111,7 @@ const FirstCard = (props) => {
                                 style={{width: 18 , height: 18 ,alignItems: 'center',justifyContent: 'center',borderWidth: 1,borderColor: '#fff',borderRadius: 30,marginRight:index!==props.tab_data.length-1?-10:0}} />
                             
               
-                             }/>
+                             }/> */}
                              </View> 
                              <View style={{flex:0.75,flexDirection:'column'}}>
                                       <Text style={{ color:'#000', fontSize: 10,fontWeight:'400'}} numberOfLines={1}>Mike +2 others joined</Text>
@@ -136,14 +142,15 @@ const FirstCard = (props) => {
 
     );
 }
-      return   <FlatList
-    horizontal={true}
-    contentContainerStyle={{ flexGrow: 1 }}
+      return <FlatList
+    horizontal={false}
+  //  contentContainerStyle={{flex:0.9,flexDirection:'row'}}
   
-    data={props.tab_data}
+    data={[1]}
     renderItem={renderItem1}
     keyExtractor={(item, index) => index.toString()}
 ></FlatList>
+
 };
 
 const styles = StyleSheet.create({
