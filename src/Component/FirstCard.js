@@ -2,6 +2,7 @@ import React ,{ useState, useEffect } from "react";
 import { Text, StyleSheet ,View,Dimensions,TouchableOpacity,ImageBackground,FlatList,Image} from "react-native";
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 import AntDesign from 'react-native-vector-icons/AntDesign'
+import Entypo from 'react-native-vector-icons/Entypo'
 import { FONTS } from "../Fonts/Fonts";
 import {HOME_TABS} from '../Constant/Constant'
 var { height, width } = Dimensions.get('window')
@@ -18,12 +19,16 @@ const FirstCard = (props) => {
       <View style={{flex:0.4,marginLeft:10,marginRight:5,marginTop:10,borderRadius:20,backgroundColor:'#FFFFFF',flexDirection:'row',elevation:3,width:width-50}}>
                 <View style={{flex:0.4,flexDirection:'column'}}>
       <ImageBackground source={require('../Image/1.jpg')} style={{ height: "100%", width: '100%' }}
-                imageStyle={{ opacity: 0.8, borderBottomLeftRadius: 10, borderBottomRightRadius: 10 }}>
+                imageStyle={{ opacity: 0.8, borderBottomLeftRadius: 10, borderBottomRightRadius: 10,borderTopLeftRadius:10,borderTopRightRadius:10 }}>
       
-                <View style={{ flex:0.7,flexDirection: 'row', marginHorizontal: 10, marginTop: 10 }}>
+                <View style={{ flex:props.type===HOME_TABS.UPCOMING?0.2:0.7,flexDirection: 'row', marginHorizontal: 10, marginTop: 10 }}>
              
                     <Text style={{ color: '#fff', fontSize: 12 ,fontWeight:'400',fontFamily:FONTS.PROXIMA_NOVA}}>3 Slots left</Text>
                   </View>
+                  {props.type===HOME_TABS.UPCOMING?
+                   <View style={{ flex:0.5,flexDirection: 'row',marginTop:-15 }}>
+                  <Entypo name='message' style={{ fontSize: 20, color: '#fff', marginLeft:8}} />
+                  </View>:null}
                  
                     <View style={{ flex:0.3,alignSelf:'flex-end',marginHorizontal:10,marginRight:20 }}>
                       <Text style={{ color: '#fff', fontSize: 12 }} numberOfLines={2}>Starts in 6 hours on PS4</Text>
