@@ -1,5 +1,5 @@
 import React ,{ useState, useEffect } from "react";
-import { Text, StyleSheet ,View,Dimensions,ImageBackground} from "react-native";
+import { Text, StyleSheet ,View,Dimensions,ImageBackground,Alert} from "react-native";
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 import CodePush from 'react-native-code-push';
 var { height, width } = Dimensions.get('window');

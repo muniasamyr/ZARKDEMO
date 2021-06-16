@@ -31,12 +31,17 @@ const filter=async (item,index)=>{
  
    const renderItem = ({ item, index }) => {
         return (
-            <TouchableOpacity onPress={() => filter(item, index)} style={{ height: 50, marginLeft: 25, marginRight: 25, justifyContent: 'center', alignSelf: 'center',alignItems:'center' ,elevation:3}}>
+            <TouchableOpacity onPress={() => filter(item, index)} style={{ height: 50, marginLeft: 22, marginRight: 22, justifyContent: 'center', alignSelf: 'center',alignItems:'center' ,elevation:3}}>
   
-                <Text style={{ marginTop:25, fontSize: 15,opacity:item.tab_name !== type ? 0.6:1,borderBottomWidth:3,borderBottomColor:item.tab_name !== type ? '#fff' : '#0087ED',borderBottomLeftRadius:5,borderBottomRightRadius:5,borderBottomStartRadius:5,borderBottomEndRadius:5}}>{item.tab_name}</Text>
+                <Text style={{ marginTop:15, fontSize: 14,opacity:item.tab_name !== type ? 0.4:1,
+                  //  borderBottomWidth:3,borderBottomColor:item.tab_name !== type ? '#fff' : '#0087ED',borderBottomLeftRadius:5,borderBottomRightRadius:5,borderBottomStartRadius:5,borderBottomEndRadius:5
+                  }}>{item.tab_name}</Text>
+                  <Text style={{ marginTop:-9, fontSize: 15,color:'#fff',
+                   borderBottomWidth:3,borderBottomColor:item.tab_name !== type ? '#fff' : '#0087ED',borderBottomLeftRadius:5,borderBottomRightRadius:5,borderBottomStartRadius:5,borderBottomEndRadius:5
+                  }}>{item.tab_name+'kk'}</Text>
                 
                 {/* <View style={{justifyContent: 'flex-start', alignSelf: 'flex-start' }} >
-                 <Dot name='minus' size={100} color={item.is_open == 0 ? '#fff' : '#0087ED'} ></Dot>  
+                 <Dot name='minus' size={100} color={item.tab_name !== type? '#fff' : '#0087ED'} ></Dot>  
                  </View> */}
             </TouchableOpacity>
         );

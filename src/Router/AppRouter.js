@@ -15,12 +15,29 @@ import { createDrawerNavigator } from 'react-navigation-drawer';
 
 import Header from './Header'
 import { FONTS } from '../Fonts/Fonts';
+const HomeStack1 = createStackNavigator({
+  HomeScreen: {
+    screen: HomeScreen,
+    navigationOptions: ({ navigation }) => {
+      return {
+        headerShown: true,
+        header:()=> <Header navigationProps={navigation} type={1} />
+      };
+    },
+  },
+  
+
+});
 const MainTab = createBottomTabNavigator({
   Home: {
-    screen: HomeScreen },
+    screen: HomeStack1
+  },
   Ho: {
-    screen: HomeScreen},
-  Hom: { screen: HomeScreen},
+    screen: HomeStack1
+  },
+  Hom: { 
+    screen: HomeStack1
+  },
 
   
   
@@ -50,7 +67,7 @@ const MainTab = createBottomTabNavigator({
       }else  if (routeName === 'Hom') {
         TabIcon = require('../Image/Profile.png');
       }
-      return <NavigationTab focused={focused} source={TabIcon}
+      return <NavigationTab focused={focused} source={TabIcon}routeName={routeName}
       />
     },
     tabBarLabel: ({ focused, horizontal, tintColor }) => {
@@ -61,7 +78,7 @@ const MainTab = createBottomTabNavigator({
       // } 
       return (
         <View style={{ justifyContent: 'center', alignItems: 'center' }}>
-          <Text style={{ textAlign: 'center', color: focused == undefined || focused ? '#0087ED' :'#DADADA', fontFamily: FONTS.PROXIMA_NOVA, fontSize: 12 }}>{TabIcon}</Text>
+          <Text style={{ textAlign: 'center', color: focused == undefined ||focused===true? '#0087ED' :'#DADADA', fontFamily: FONTS.PROXIMA_NOVA, fontSize: 12 }}>{TabIcon}</Text>
         </View>)
 
     },
@@ -78,14 +95,7 @@ const DrawerScreens = createDrawerNavigator(
     MainTab: {
       screen: MainTab, // Tabs
 
-    },
-    MainTab: {
-      screen: MainTab, // Tabs
-
-    },
-    MainTab: {
-      screen: MainTab, // Tabs
-
+    
     },
 
     
@@ -104,7 +114,7 @@ class NavigationTab extends Component {
 
   render() {
     return (
-      <Image style={{ tintColor: this.props.focused = undefined || this.props.focused ? '#0087ED' : '#DADADA' }} source={this.props.source}
+      <Image style={this.props.routeName === 'Ho' ?{}:{ tintColor: this.props.focused = undefined || this.props.focused ? '#0087ED' : '#DADADA' }} source={this.props.source}
       />
     );
   }
