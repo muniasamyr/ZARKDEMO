@@ -1,5 +1,5 @@
 import React ,{ useState, useEffect } from "react";
-import { Text, StyleSheet ,View,Dimensions,TouchableOpacity,ImageBackground,FlatList,Image,ScrollView} from "react-native";
+import { Text, StyleSheet ,View,Dimensions,TouchableOpacity,ImageBackground,FlatList,Image,ScrollView,ActivityIndicator} from "react-native";
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 import HomeCard from '../../Component/HomeCard'
 import { FONTS } from "../../Fonts/Fonts";
@@ -14,18 +14,24 @@ const HomeScreen = (props) => {
   const tab_datas=[{tab_name:'invites',is_open:0,type:HOME_TABS.INVITIES},{tab_name:'Upcoming',is_open:0,type:HOME_TABS.UPCOMING},{tab_name:'Completed',is_open:0,type:HOME_TABS.COMPLETE}]
   const [tab_data,setTab_Data] = useState(tab_datas);
   const [type,setType] = useState(HOME_TABS.INVITIES);
+  const [isLoading,setIsLoading] = useState(true);
   // const [type,setType] = useState(HOME_TABS.INVITIES);
 const _onDone=()=>{
 
 }
 const filter=async (item,index)=>{
+  setIsLoading(true)
   await setType(item.tab_name)
+ await getHomeData('/'+type)
+  setIsLoading(false)
  
 }
-// useEffect(async() => {
-//   getHomeData()
-// }      
-// )
+useEffect(async() => {
+  setIsLoading(true)
+  getHomeData('/'+type)
+  setIsLoading(false)
+}      
+)
    
 
  
@@ -62,6 +68,7 @@ const filter=async (item,index)=>{
     );
 }
       return   <View style={{flex:1,backgroundColor:'#E5E5E5'}}>
+       
 <ScrollView style={{flex:1}}>
        <View style={{ flex:0.1 ,backgroundColor:'#FFFFFF',elevation:3 }}>
 
@@ -76,7 +83,9 @@ const filter=async (item,index)=>{
 </FlatList>
 
 </View>
-
+{isLoading===true?
+<View style={{marginTop:height/2.5}}><ActivityIndicator  size='large' color="#0087ED" ></ActivityIndicator></View>:
+<View>
     <FirstCard
         type={type}
         tab_data={tab_data}
@@ -89,8 +98,9 @@ const filter=async (item,index)=>{
     renderItem={renderItem2}
     keyExtractor={(item, index) => index.toString()}
 ></FlatList>
+</View>
    
-
+}
 
 
 
